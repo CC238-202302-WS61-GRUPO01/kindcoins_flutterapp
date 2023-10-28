@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kindcoins_flutterapp/screens/home/components/header.dart';
 
 class PremiumScreen extends StatefulWidget {
   const PremiumScreen({Key? key}) : super(key: key);
@@ -11,10 +12,7 @@ class _PremiumScreenState extends State<PremiumScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 5, 151, 166),
-        title: Text('Pagos'),
-      ),
+      appBar: Header(),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
