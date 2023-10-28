@@ -35,4 +35,6 @@ flutter:
     - assets/images/create_campaign/default_campaign_image.png
     - assets/images/home_images/hospital.png
     - assets/images/profile/cat-profile.jpg
+    - assets/images/welcome_images/welcome-screen-image.png
+    - assets/logo/kind_coins_logo.png
 

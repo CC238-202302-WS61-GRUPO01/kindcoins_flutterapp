@@ -13,6 +13,7 @@ class CampaignPreview extends StatelessWidget {
       //drawer: SideNavBar(),
       backgroundColor: Color.fromARGB(255, 235, 255, 253),
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 5, 151, 166),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),

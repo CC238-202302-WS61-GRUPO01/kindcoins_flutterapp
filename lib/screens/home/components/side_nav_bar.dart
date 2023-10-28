@@ -4,6 +4,7 @@ import '../../create-campaign/create_campaign_1.dart';
 import '../../saved/saved_screen.dart';
 import '../../profile/profile_screen.dart';
 import '../../premium/premium_screen.dart';
+import '../../welcome/welcome_screen.dart';
 
 class SideNavBar extends StatelessWidget {
   const SideNavBar({super.key});
@@ -121,7 +122,7 @@ class SideNavBar extends StatelessWidget {
             },
           ),
           Padding(
-            padding: EdgeInsets.only(top:24.0),
+            padding: EdgeInsets.only(top:16.0),
           ),
           ListTile(
             leading: Icon(Icons.add_circle),
@@ -143,6 +144,32 @@ class SideNavBar extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => CampaignCreationPage()), // Reemplaza con la pantalla que desees
+              );
+            },
+          ),
+          Padding(
+            padding: EdgeInsets.only(top:16.0),
+          ),
+          ListTile(
+            leading: Icon(Icons.arrow_back_outlined),
+            title: Text(
+              "Cerrar sesión",
+              textAlign: TextAlign.left,
+              overflow: TextOverflow.visible,
+              selectionColor: Colors.white,
+              style: GoogleFonts.roboto(
+                  textStyle:TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 20,
+                      color: Colors.black//Negro 1
+                  )
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context).pop(); // Cierra el Drawer
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => WelcomeScreen()), // Reemplaza con la pantalla que desees
               );
             },
           ),
