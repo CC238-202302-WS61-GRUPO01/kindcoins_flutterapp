@@ -77,7 +77,7 @@ class SideNavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.money_outlined),
             title: Text(
-              "Premium",
+              "Pagos",
               textAlign: TextAlign.left,
               overflow: TextOverflow.visible,
               selectionColor: Colors.white,

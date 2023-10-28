@@ -48,7 +48,7 @@ class _PlanSelectionState extends State<PlanSelection> {
             PlanItem(
               title: 'Premium mensual',
               content:
-                  '\u2022 Crear tu campaña y recibe donaciones\n\u2022 Duración ilimitada\n\u2022 Mayor visibilidad en nuestra sección de campañas\n\u2022 Prioridad en soporte',
+              '\u2022 Crear tu campaña y recibe donaciones\n\u2022 Duración ilimitada\n\u2022 Mayor visibilidad en nuestra sección de campañas\n\u2022 Prioridad en soporte',
               price: "\$ 9.99",
             ),
             const SizedBox(
@@ -57,7 +57,7 @@ class _PlanSelectionState extends State<PlanSelection> {
             PlanItem(
               title: 'Premium mensual',
               content:
-                  '\u2022 Crear tu campaña y recibe donaciones\n\u2022 Duración ilimitada\n\u2022 Mayor visibilidad en nuestra sección de campañas\n\u2022 Prioridad en soporte',
+              '\u2022 Crear tu campaña y recibe donaciones\n\u2022 Duración ilimitada\n\u2022 Mayor visibilidad en nuestra sección de campañas\n\u2022 Prioridad en soporte',
               price: "\$ 99.90",
             ),
             const SizedBox(
@@ -66,7 +66,7 @@ class _PlanSelectionState extends State<PlanSelection> {
             PlanItem(
               title: 'Premium mensual',
               content:
-                  '\u2022 Crear tu campaña y recibe donaciones\n\u2022 Duración de campaña máxima 1 mes',
+              '\u2022 Crear tu campaña y recibe donaciones\n\u2022 Duración de campaña máxima 1 mes',
               price: "Gratis",
             ),
             const SizedBox(
@@ -91,5 +91,4 @@ class _PlanSelectionState extends State<PlanSelection> {
     );
   }
 }
-
 

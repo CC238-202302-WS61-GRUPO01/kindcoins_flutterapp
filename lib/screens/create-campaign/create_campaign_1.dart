@@ -74,15 +74,6 @@ class _CampaignCreationPageState extends State<CampaignCreationPage> {
               // Step 1 of 5
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  'Paso 1 de 5',
-                  style: TextStyle(
-                    color: Colors.grey[600],
-                    fontSize: 14,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
               ),
               // Name of the campaign
               Padding(
@@ -147,7 +138,7 @@ class _CampaignCreationPageState extends State<CampaignCreationPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Foto de la campaña',
+                      'Foto principal de la campaña',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 14,
@@ -158,8 +149,8 @@ class _CampaignCreationPageState extends State<CampaignCreationPage> {
                     SizedBox(height: 8),
                     // Default image
                     _chosenImage != null
-                        ? Image.file(_chosenImage!)
-                        : Image.asset('assets/images/create_campaign/default_campaign_image.png'),
+                        ? Image.file(_chosenImage!,  height: 100,)
+                        : Image.asset('assets/images/create_campaign/default_campaign_image.png',  height: 100,),
                     // Edit button
                     TextButton(
                       onPressed: () {
@@ -181,10 +172,11 @@ class _CampaignCreationPageState extends State<CampaignCreationPage> {
               // Chosen photo name and Edit button
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Row(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Foto elegida: ',
+                      'Foto secundaria de la campaña',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 14,
@@ -192,16 +184,12 @@ class _CampaignCreationPageState extends State<CampaignCreationPage> {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    Text(
-                      _chosenImage != null ? _chosenImage!.path : '(Sin nombre)',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                        fontFamily: 'Roboto',
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Spacer(),
+                    SizedBox(height: 8),
+                    // Default image
+                    _chosenImage != null
+                        ? Image.file(_chosenImage!,  height: 100,)
+                        : Image.asset('assets/images/create_campaign/default_campaign_image.png',  height: 100,),
+                    // Edit button
                     TextButton(
                       onPressed: () {
                         _pickImage();

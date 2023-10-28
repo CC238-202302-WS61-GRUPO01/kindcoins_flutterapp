@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'create_campaign_6.dart';
-
-
+import 'components/pago.dart';
 
 class PaymentOptions extends StatefulWidget {
   @override
@@ -32,6 +31,7 @@ class _PaymentOptionsState extends State<PaymentOptions> {
                 currentOpt = value.toString();
               });
             },
+            activeColor: Color.fromARGB(255, 5, 151, 166),
           ),
         ),
         ListTile(
@@ -48,6 +48,7 @@ class _PaymentOptionsState extends State<PaymentOptions> {
                 currentOpt = value.toString();
               });
             },
+            activeColor: Color.fromARGB(255, 5, 151, 166),
           ),
         ),
         ListTile(
@@ -64,6 +65,7 @@ class _PaymentOptionsState extends State<PaymentOptions> {
                 currentOpt = value.toString();
               });
             },
+            activeColor: Color.fromARGB(255, 5, 151, 166),
           ),
         ),
         MaterialButton(
