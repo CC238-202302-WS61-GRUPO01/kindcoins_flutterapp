@@ -22,11 +22,13 @@ class SideNavBar extends StatelessWidget {
               padding: EdgeInsets.all(8.0),
               child: Row(
                 children: <Widget>[
-                  Image(
-                    alignment: Alignment.centerLeft,
-                    image: AssetImage("assets/images/profile/cat-profile.jpg"),
-                    width: 80.0,
-                    fit: BoxFit.fitHeight,
+                  ClipOval(
+                    child: Image(
+                      image: AssetImage("assets/images/profile/cat-profile.jpg"),
+                      width: 80.0,
+                      height: 80.0,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(right:8.0),
