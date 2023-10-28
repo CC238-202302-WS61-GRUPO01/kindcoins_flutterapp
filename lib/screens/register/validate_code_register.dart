@@ -12,6 +12,7 @@ class _ValidateCodeState extends State<ValidateCodeRegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 5, 151, 166),
           title: const Text("Registro"),
         ),
         body: Center(
@@ -29,6 +30,9 @@ class _ValidateCodeState extends State<ValidateCodeRegisterScreen> {
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Ingrese su celular',
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color.fromARGB(255, 5, 151, 166)), // Color del borde al recibir foco
+                        ),
                       ),
                     ),
                     //Espacio extra

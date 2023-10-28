@@ -12,6 +12,7 @@ class _ValidarCodigoState extends State<ValidarCodigoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 5, 151, 166),
           title: const Text("Registro"),
         ),
         body: Center(
@@ -29,6 +30,9 @@ class _ValidarCodigoState extends State<ValidarCodigoScreen> {
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Ingrese el código',
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color.fromARGB(255, 5, 151, 166)), // Color del borde al recibir foco
+                        ),
                       ),
                     ),
                     //Espacio extra
@@ -43,7 +47,11 @@ class _ValidarCodigoState extends State<ValidarCodigoScreen> {
                               MaterialPageRoute(
                                   builder: (context) => RegistroScreen()));
                         },
-                        child: const Text('Validar')),
+                        child: const Text('Validar'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 5, 151, 166),
+                      ),
+                    ),
                   ],
                 ))));
   }
