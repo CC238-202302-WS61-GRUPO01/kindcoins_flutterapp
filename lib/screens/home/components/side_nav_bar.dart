@@ -5,6 +5,7 @@ import '../../saved/saved_screen.dart';
 import '../../profile/profile_screen.dart';
 import '../../premium/premium_screen.dart';
 import '../../welcome/welcome_screen.dart';
+import '../../post/post_screen.dart';
 
 class SideNavBar extends StatelessWidget {
   const SideNavBar({super.key});
@@ -68,6 +69,32 @@ class SideNavBar extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => ProfileScreen()),
+              );
+            }, //onTap: (){},
+          ),
+          Padding(
+            padding: EdgeInsets.only(top:16.0),
+          ),
+          ListTile(
+            leading: Icon(Icons.newspaper_outlined),
+            title: Text(
+              "Noticias",
+              textAlign: TextAlign.left,
+              overflow: TextOverflow.visible,
+              selectionColor: Colors.white,
+              style: GoogleFonts.roboto(
+                  textStyle:TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 20,
+                      color: Colors.black//Negro 1
+                  )
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context).pop(); // Cierra el Drawer
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PostScreen()),
               );
             }, //onTap: (){},
           ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'side_nav_bar.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: Text('KindCoins'),
-      leading: Icon(Icons.home),
+    return AppBar(backgroundColor: Color.fromARGB(255, 5, 151, 166),
+      title: Text('Kind Coins'),
       actions: [
         IconButton(
           icon: Icon(Icons.search),
@@ -13,8 +13,13 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
             // Lógica del botón de búsqueda
           },
         ),
+        IconButton(
+          icon: Icon(Icons.notifications),
+          onPressed: () {
+            // Lógica del botón de notificaciones
+          },
+        ),
       ],
-      automaticallyImplyLeading: true,
     );
   }
 

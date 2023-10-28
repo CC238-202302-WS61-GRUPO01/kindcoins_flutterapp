@@ -44,7 +44,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Color.fromARGB(255, 5, 151, 166), title: Text('Kind Coins')),
+      appBar: Header(),
       drawer: SideNavBar(),
       body: Column(
         children: [
