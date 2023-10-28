@@ -15,7 +15,7 @@ class _ReceptionConfigurationState extends State<ReceptionConfiguration> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text("Paso 3 de 5"),

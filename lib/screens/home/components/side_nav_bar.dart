@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../create-campaign/create_campaign_1.dart';
+import '../../saved/saved_screen.dart';
+import '../../profile/profile_screen.dart';
+import '../../premium/premium_screen.dart';
 
 class SideNavBar extends StatelessWidget {
   const SideNavBar({super.key});
@@ -20,7 +23,7 @@ class SideNavBar extends StatelessWidget {
                 children: <Widget>[
                   Image(
                     alignment: Alignment.centerLeft,
-                    image: AssetImage("lib/images.png"),
+                    image: AssetImage("assets/images/profile/cat-profile.jpg"),
                     width: 80.0,
                     fit: BoxFit.fitHeight,
                   ),
@@ -28,7 +31,7 @@ class SideNavBar extends StatelessWidget {
                     padding: EdgeInsets.only(right:8.0),
                   ),
                   Text(
-                    "Nombre de usuario",
+                    "Usuario prueba",
                     textAlign: TextAlign.right,
                     style: GoogleFonts.roboto(
                         textStyle:TextStyle(
@@ -43,6 +46,7 @@ class SideNavBar extends StatelessWidget {
           ),
           Padding(padding: EdgeInsets.only(top:16.0),),
           ListTile(
+            leading: Icon(Icons.account_circle_outlined),
             title: Text(
               "Perfil",
               textAlign: TextAlign.left,
@@ -56,12 +60,19 @@ class SideNavBar extends StatelessWidget {
                   )
               ),
             ),
-            //onTap: (){},
+            onTap: () {
+              Navigator.of(context).pop(); // Cierra el Drawer
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileScreen()),
+              );
+            }, //onTap: (){},
           ),
           Padding(
             padding: EdgeInsets.only(top:16.0),
           ),
           ListTile(
+            leading: Icon(Icons.money_outlined),
             title: Text(
               "Premium",
               textAlign: TextAlign.left,
@@ -75,11 +86,19 @@ class SideNavBar extends StatelessWidget {
                   )
               ),
             ),
+            onTap: () {
+              Navigator.of(context).pop(); // Cierra el Drawer
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PremiumScreen()),
+              );
+            },
           ),
           Padding(
             padding: EdgeInsets.only(top:16.0),
           ),
           ListTile(
+            leading: Icon(Icons.favorite),
             title: Text(
               "Guardados",
               textAlign: TextAlign.left,
@@ -93,12 +112,19 @@ class SideNavBar extends StatelessWidget {
                   )
               ),
             ),
-            //onTap: (){},
+            onTap: () {
+              Navigator.of(context).pop(); // Cierra el Drawer
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SavedScreen()),
+              );
+            },
           ),
           Padding(
             padding: EdgeInsets.only(top:24.0),
           ),
           ListTile(
+            leading: Icon(Icons.add_circle),
             title: Text(
               "Crear campaña",
               textAlign: TextAlign.left,

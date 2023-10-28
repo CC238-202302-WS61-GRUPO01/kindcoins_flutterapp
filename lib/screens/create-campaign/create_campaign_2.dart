@@ -30,6 +30,14 @@ class _CampaignCreationPage2State extends State<CampaignCreationPage2> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFEBFFFD),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: const Text("Paso 2 de 5"),
+        centerTitle: true,
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

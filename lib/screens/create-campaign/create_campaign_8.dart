@@ -13,18 +13,12 @@ class CampaignPreview extends StatelessWidget {
       //drawer: SideNavBar(),
       backgroundColor: Color.fromARGB(255, 235, 255, 253),
       appBar: AppBar(
-        title: Text(
-          "Paso 5 de 5",
-          textAlign: TextAlign.center,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              // Go back to the previous screen
-            },
-          ),
-        ],
+        title: const Text("Paso 5 de 5"),
+        centerTitle: true,
       ),
       body: ListView(
         children: <Widget>[
