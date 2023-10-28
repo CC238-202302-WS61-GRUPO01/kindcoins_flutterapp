@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kindcoins_flutterapp/screens/create-campaign/components/plan_item.dart';
 import 'create_campaign_5.dart';
+import 'components/pago.dart';
 
 class PlanSelection extends StatefulWidget {
   const PlanSelection({super.key});
@@ -10,6 +11,25 @@ class PlanSelection extends StatefulWidget {
 }
 
 class _PlanSelectionState extends State<PlanSelection> {
+  _mostrarDialogoPago(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Proceso de Pago Premium'),
+          content: PasoPagoPremium(),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cerrar'),
+            ),
+          ],
+        );
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,10 +81,7 @@ class _PlanSelectionState extends State<PlanSelection> {
                 textColor: Colors.white,
                 child: const Text("Siguiente"),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PaymentOptions()),
-                  );
+                  _mostrarDialogoPago(context);
                 },
               ),
             )
@@ -74,3 +91,5 @@ class _PlanSelectionState extends State<PlanSelection> {
     );
   }
 }
+
+

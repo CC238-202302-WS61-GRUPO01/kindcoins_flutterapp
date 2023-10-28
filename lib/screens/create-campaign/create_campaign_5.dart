@@ -11,77 +11,70 @@ class PaymentOptions extends StatefulWidget {
 List<String> options=['Visa','Yape','Plin'];
 
 class _PaymentOptionsState extends State<PaymentOptions> {
-  String currentOpt=options[0];
+  String currentOpt = options[0];
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text("Selecciona tu método de pago"),
-      content: Scaffold(
-        body: Column(
-          children: <Widget>[
-            Text("Revisa el detalle del monto antes de pagar"),
-            ListTile(
-              title: Image(
-                image: AssetImage("assets/images/create_campaign/Visa.png"),
-                height: 15.0,
-                width: 20.0,
-              ),
-              leading: Radio(
-                value: options[0],
-                groupValue: currentOpt,
-                onChanged: (value){
-                  setState(() {
-                    currentOpt=value.toString();
-                  });
-                },
-              ),
-            ),
-            ListTile(
-              title: Image(
-                image: AssetImage("assets/images/create_campaign/Yape.png"),
-                height: 15.0,
-                width: 15.0,
-              ),
-              leading: Radio(
-                value: options[1],
-                groupValue: currentOpt,
-                onChanged: (value){
-                  setState(() {
-                    currentOpt=value.toString();
-                  });
-                },
-              ),
-            ),
-            ListTile(
-              title: Image(
-                image: AssetImage("assets/images/create_campaign/Plin.png"),
-                height: 15.0,
-                width: 15.0,
-              ),
-              leading: Radio(
-                value: options[2],
-                groupValue: currentOpt,
-                onChanged: (value){
-                  setState(() {
-                    currentOpt=value.toString();
-                  });
-                },
-              ),
-            ),
-          ],
+    return Column(
+      children: [
+        Text("Selecciona tu método de pago"),
+        ListTile(
+          title: Image(
+            image: AssetImage("assets/images/create_campaign/Visa.png"),
+            height: 15.0,
+            width: 20.0,
+          ),
+          leading: Radio(
+            value: options[0],
+            groupValue: currentOpt,
+            onChanged: (value) {
+              setState(() {
+                currentOpt = value.toString();
+              });
+            },
+          ),
         ),
-      ),
-      actions: [
+        ListTile(
+          title: Image(
+            image: AssetImage("assets/images/create_campaign/Yape.png"),
+            height: 15.0,
+            width: 15.0,
+          ),
+          leading: Radio(
+            value: options[1],
+            groupValue: currentOpt,
+            onChanged: (value) {
+              setState(() {
+                currentOpt = value.toString();
+              });
+            },
+          ),
+        ),
+        ListTile(
+          title: Image(
+            image: AssetImage("assets/images/create_campaign/Plin.png"),
+            height: 15.0,
+            width: 15.0,
+          ),
+          leading: Radio(
+            value: options[2],
+            groupValue: currentOpt,
+            onChanged: (value) {
+              setState(() {
+                currentOpt = value.toString();
+              });
+            },
+          ),
+        ),
         MaterialButton(
-            child: Text("Continuar"),
-            onPressed: (){
-              showDialog(
-                  context: context,
-                  builder: (_)=>CardForm()
-              );
-            }
-        )
+          child: Text("Continuar", style: TextStyle(color: Color.fromARGB(255, 5, 151, 166)),),
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (_) => CardForm(),
+            );
+          },
+        ),
       ],
     );
   }
