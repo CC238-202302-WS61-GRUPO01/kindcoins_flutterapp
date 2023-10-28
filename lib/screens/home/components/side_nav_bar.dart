@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../create-campaign/create_campaign_1.dart';
 
 class SideNavBar extends StatelessWidget {
   const SideNavBar({super.key});
@@ -74,7 +75,6 @@ class SideNavBar extends StatelessWidget {
                   )
               ),
             ),
-            //onTap: (){},
           ),
           Padding(
             padding: EdgeInsets.only(top:16.0),
@@ -112,8 +112,14 @@ class SideNavBar extends StatelessWidget {
                   )
               ),
             ),
-            //onTap: (){},
-          )
+            onTap: () {
+              Navigator.of(context).pop(); // Cierra el Drawer
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CampaignCreationPage()), // Reemplaza con la pantalla que desees
+              );
+            },
+          ),
         ],
       ),
     );

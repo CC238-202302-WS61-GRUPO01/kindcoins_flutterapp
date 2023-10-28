@@ -8,13 +8,6 @@ import '../home/components/side_nav_bar.dart';
 class HomeScreen extends StatelessWidget {
   final List<Map<String, String>> explorarItems = [
     {
-      'imageURL':
-      'https://cdn.discordapp.com/attachments/1019832105108242555/1157117727937400933/image.png?ex=6517715c&is=65161fdc&hm=0ee0c6a8b1fdff3ee1ee756524b74a3a2b20e16c72225f746a783f5e01d74725&',
-      'title': 'Título 1',
-      'description':
-      'Las comidas compartidas proporcionarán a las familias de Palestina un apoyo en efectivo para que puedan comprar alimentos en tiendas locales.',
-    },
-    {
       'imageURL': 'assets/images/create_campaign/girl_eat.jpg',
       'title': 'Título 2',
       'description':
@@ -30,10 +23,9 @@ class HomeScreen extends StatelessWidget {
 
   final List<Map<String, String>> items = [
     {
-      'imageURL':
-      'https://cdn.discordapp.com/attachments/1019832105108242555/1157117727937400933/image.png?ex=6517715c&is=65161fdc&hm=0ee0c6a8b1fdff3ee1ee756524b74a3a2b20e16c72225f746a783f5e01d74725&',
-      'title': 'Los mejores destinos para viajar',
-      'description': 'Descubre lugares increíbles para tu próxima aventura',
+      'imageURL': 'assets/images/home_images/hospital.png',
+      'title': 'Hospital San Carlos',
+      'description': 'Gran campaña de donación',
     },
     {
       'imageURL':
@@ -52,8 +44,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Kind Coins')),
       drawer: SideNavBar(),
-      appBar: Header(),
       body: Column(
         children: [
           Container(
