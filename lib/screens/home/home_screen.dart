@@ -6,70 +6,88 @@ import '../home/components/trend_carrousel.dart';
 import '../home/components/side_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
-  final List<Map<String, String>> explorarItems = [
+  final List<Map<String, dynamic>> explorarItems = [
     {
       'imageURL':
-      'https://cdn.discordapp.com/attachments/1019832105108242555/1157117727937400933/image.png?ex=6517715c&is=65161fdc&hm=0ee0c6a8b1fdff3ee1ee756524b74a3a2b20e16c72225f746a783f5e01d74725&',
-      'title': 'Título 1',
+          'https://media.istockphoto.com/id/115071061/es/foto/ni%C3%B1o-de-asia-en-laos.jpg?s=612x612&w=is&k=20&c=9YI3pRREapPsZxUkN5Y4bJ0DsfcS_s415TxEFRTUdcM=',
+      'title': 'Alimenta familias',
       'description':
-      'Las comidas compartidas proporcionarán a las familias de Palestina un apoyo en efectivo para que puedan comprar alimentos en tiendas locales.',
+          'Las comidas compartidas proporcionarán a las familias afectadas por la guerra un apoyo en efectivo para que puedan comprar alimentos en tiendas locales.',
     },
     {
-      'imageURL': 'assets/images/create_campaign/girl_eat.jpg',
-      'title': 'Título 2',
+      'imageURL':
+          'https://media.istockphoto.com/id/1599017115/es/foto/ayuda-de-agua-potable-para-residentes-afectados-por-la-sequ%C3%ADa-en-indonesia.jpg?s=612x612&w=is&k=20&c=jNV3cbZ5tGL_O1qCEEw1zJOyxBoM8fVAppOd73zvE-Q=',
+      'title': 'Agua potable',
       'description':
-      'Las comidas compartidas proporcionarán a las familias de Palestina un apoyo en efectivo para que puedan comprar alimentos en tiendas locales.',
+          'Las donaciones proporcionarán apoyo a los afectados por la sequias.',
     },
     {
-      'imageURL': 'assets/images/create_campaign/guy_dessert.jpg',
-      'title': 'Título 3',
+      'imageURL':
+          'https://media.istockphoto.com/id/185096067/es/foto/oscuridad-hospital-habitaci%C3%B3n.jpg?s=612x612&w=is&k=20&c=SHaBVZMEqKnPRf7QDXsc-sTe03cU-T4UAv0QfLeZjYk=',
+      'title': 'Equipo médico para hospitales',
       'description':
-      'Las comidas compartidas proporcionarán a las familias de Palestina un apoyo en efectivo para que puedan comprar alimentos en tiendas locales.',
+          'Las donaciones proporcionarán apoyo a los hospitales para que puedan comprar equipos médicos actuales y plenamente funcionales.',
     }
   ];
-
-  final List<Map<String, String>> items = [
+  final List<Map<String, dynamic>> items = [
     {
-      'imageURL':
-      'https://cdn.discordapp.com/attachments/1019832105108242555/1157117727937400933/image.png?ex=6517715c&is=65161fdc&hm=0ee0c6a8b1fdff3ee1ee756524b74a3a2b20e16c72225f746a783f5e01d74725&',
-      'title': 'Los mejores destinos para viajar',
-      'description': 'Descubre lugares increíbles para tu próxima aventura',
+      'imageURL': 'assets/images/home_images/hospital.png',
+      'title': 'Campaña de donación de sangre',
+      'description': 'Ayuda a salvar vidas donando sangre',
     },
     {
-      'imageURL':
-      'https://images.unsplash.com/photo-1635444943310-9a0f6c3f0b8d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      'title': 'Las mejores recetas para cocinar',
-      'description': 'Aprende a preparar platos deliciosos y saludables',
-    },
+      'imageURL': 'assets/images/home_images/puppys.png',
+      'title': 'Ayuda a los animales',
+      'description': 'Las donaciones ayudarán a los animales sin hogar',
+    }, /*
     {
       'imageURL':
-      'https://images.unsplash.com/photo-1635444943310-9a0f6c3f0b8d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+          'https://images.unsplash.com/photo-1635444943310-9a0f6c3f0b8d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
       'title': 'Los mejores consejos para ahorrar',
       'description': 'Mejora tus finanzas personales con estos tips',
-    },
+    },*/
   ];
 
+  HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: SideNavBar(),
       appBar: Header(),
+      backgroundColor: const Color(0xFFEBFFFD),
       body: Column(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            child: Text(
+            width: double.infinity,
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            decoration: const BoxDecoration(
+              color: Color(0xFFEBFFFD),
+            ),
+            child: const Text(
               'Tendencia',
-              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
             ),
           ),
           TrendCarrousel(items),
           Container(
-            margin: EdgeInsets.only(right: 16.0),
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            child: Text(
+            margin: const EdgeInsets.only(right: 16.0),
+            width: double.infinity,
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            decoration: const BoxDecoration(
+              color: Color(0xFFEBFFFD),
+            ),
+            child: const Text(
               'Explorar',
-              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
             ),
           ),
           ExploreCarrousel(

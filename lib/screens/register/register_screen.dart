@@ -47,6 +47,7 @@ class _RegistroBState extends State<RegistroScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 5, 151, 166),
           title: const Text("Registro"),
         ),
         body: Center(
@@ -64,6 +65,9 @@ class _RegistroBState extends State<RegistroScreen> {
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Ingrese su nombre',
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color.fromARGB(255, 5, 151, 166)), // Color del borde al recibir foco
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -78,6 +82,9 @@ class _RegistroBState extends State<RegistroScreen> {
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Ingrese su celular',
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color.fromARGB(255, 5, 151, 166)), // Color del borde al recibir foco
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -92,6 +99,9 @@ class _RegistroBState extends State<RegistroScreen> {
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Ingrese su correo electrónico',
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color.fromARGB(255, 5, 151, 166)), // Color del borde al recibir foco
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -103,18 +113,33 @@ class _RegistroBState extends State<RegistroScreen> {
                     ),
                     ElevatedButton(
                         child: Text("Elija la fecha"),
-                        onPressed: () async {
-                          final DateTime? dateTime = await showDatePicker(
-                              context: context,
-                              initialDate: selectedDate,
-                              firstDate: DateTime(1900),
-                              lastDate: DateTime(2050));
-                          if (dateTime != null) {
-                            setState(() {
-                              selectedDate = dateTime;
-                            });
-                          }
-                        }),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromARGB(255, 5, 151, 166),
+                        ),
+                      onPressed: () async {
+                        final DateTime? dateTime = await showDatePicker(
+                          context: context,
+                          initialDate: selectedDate,
+                          firstDate: DateTime(1900),
+                          lastDate: DateTime(2050),
+                          builder: (BuildContext context, Widget? child) {
+                            return Theme(
+                              data: ThemeData.light().copyWith(
+                                primaryColor: Color.fromARGB(255, 5, 151, 166),
+                                colorScheme: ColorScheme.light(primary: Color.fromARGB(255, 5, 151, 166)),
+                                buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+                              ),
+                              child: child!,
+                            );
+                          },
+                        );
+                        if (dateTime != null) {
+                          setState(() {
+                            selectedDate = dateTime;
+                          });
+                        }
+                      },
+                    ),
                     const SizedBox(
                       height: 20,
                     ),
@@ -153,6 +178,9 @@ class _RegistroBState extends State<RegistroScreen> {
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Ingrese su dirección',
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color.fromARGB(255, 5, 151, 166)), // Color del borde al recibir foco
+                        ),
                       ),
                     ),
                     //Espacio extra
@@ -169,7 +197,10 @@ class _RegistroBState extends State<RegistroScreen> {
                                   builder: (context) => HomeScreen()));
                         }
                       },
-                      child: const Text('Enviar Código'),
+                      child: const Text('Registrar'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 5, 151, 166),
+                      ),
                     ),
                   ],
                 ))));

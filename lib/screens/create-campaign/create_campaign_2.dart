@@ -30,63 +30,20 @@ class _CampaignCreationPage2State extends State<CampaignCreationPage2> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFEBFFFD),
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 5, 151, 166),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: const Text("Paso 2 de 5"),
+        centerTitle: true,
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Crear campaña',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 48, 16, 16),
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    _goBack();
-                  },
-                  child: Container(
-                    width: 28,
-                    height: 28,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xFFD9D9D9),
-                    ),
-                    child: Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    'Paso 2 de 5',
-                    style: TextStyle(
-                      color: Color(0xFF687781),
-                      fontSize: 14,
-                      fontFamily: 'Roboto',
-                      fontWeight: FontWeight.w400,
-                      height: 0.12,
-                    ),
-                  ),
-                ),
-                Container(
-                  width: 28,
-                  height: 28,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                ),
-              ],
-            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),

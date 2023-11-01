@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../create-campaign/create_campaign_1.dart';
+import '../../saved/saved_screen.dart';
+import '../../profile/profile_screen.dart';
+import '../../premium/premium_screen.dart';
+import '../../welcome/welcome_screen.dart';
+import '../../post/post_screen.dart';
 
 class SideNavBar extends StatelessWidget {
   const SideNavBar({super.key});
@@ -17,17 +23,19 @@ class SideNavBar extends StatelessWidget {
               padding: EdgeInsets.all(8.0),
               child: Row(
                 children: <Widget>[
-                  Image(
-                    alignment: Alignment.centerLeft,
-                    image: AssetImage("lib/images.png"),
-                    width: 80.0,
-                    fit: BoxFit.fitHeight,
+                  ClipOval(
+                    child: Image(
+                      image: AssetImage("assets/images/profile/cat-profile.jpg"),
+                      width: 80.0,
+                      height: 80.0,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(right:8.0),
                   ),
                   Text(
-                    "Nombre de usuario",
+                    "Usuario prueba",
                     textAlign: TextAlign.right,
                     style: GoogleFonts.roboto(
                         textStyle:TextStyle(
@@ -42,6 +50,7 @@ class SideNavBar extends StatelessWidget {
           ),
           Padding(padding: EdgeInsets.only(top:16.0),),
           ListTile(
+            leading: Icon(Icons.account_circle_outlined),
             title: Text(
               "Perfil",
               textAlign: TextAlign.left,
@@ -55,14 +64,21 @@ class SideNavBar extends StatelessWidget {
                   )
               ),
             ),
-            //onTap: (){},
+            onTap: () {
+              Navigator.of(context).pop(); // Cierra el Drawer
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileScreen()),
+              );
+            }, //onTap: (){},
           ),
           Padding(
             padding: EdgeInsets.only(top:16.0),
           ),
           ListTile(
+            leading: Icon(Icons.newspaper_outlined),
             title: Text(
-              "Premium",
+              "Noticias",
               textAlign: TextAlign.left,
               overflow: TextOverflow.visible,
               selectionColor: Colors.white,
@@ -74,12 +90,45 @@ class SideNavBar extends StatelessWidget {
                   )
               ),
             ),
-            //onTap: (){},
+            onTap: () {
+              Navigator.of(context).pop(); // Cierra el Drawer
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PostScreen()),
+              );
+            }, //onTap: (){},
           ),
           Padding(
             padding: EdgeInsets.only(top:16.0),
           ),
           ListTile(
+            leading: Icon(Icons.money_outlined),
+            title: Text(
+              "Pagos",
+              textAlign: TextAlign.left,
+              overflow: TextOverflow.visible,
+              selectionColor: Colors.white,
+              style: GoogleFonts.roboto(
+                  textStyle:TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 20,
+                      color: Colors.black//Negro 1
+                  )
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context).pop(); // Cierra el Drawer
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PremiumScreen()),
+              );
+            },
+          ),
+          Padding(
+            padding: EdgeInsets.only(top:16.0),
+          ),
+          ListTile(
+            leading: Icon(Icons.favorite),
             title: Text(
               "Guardados",
               textAlign: TextAlign.left,
@@ -93,12 +142,19 @@ class SideNavBar extends StatelessWidget {
                   )
               ),
             ),
-            //onTap: (){},
+            onTap: () {
+              Navigator.of(context).pop(); // Cierra el Drawer
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SavedScreen()),
+              );
+            },
           ),
           Padding(
-            padding: EdgeInsets.only(top:24.0),
+            padding: EdgeInsets.only(top:16.0),
           ),
           ListTile(
+            leading: Icon(Icons.add_circle),
             title: Text(
               "Crear campaña",
               textAlign: TextAlign.left,
@@ -112,8 +168,40 @@ class SideNavBar extends StatelessWidget {
                   )
               ),
             ),
-            //onTap: (){},
-          )
+            onTap: () {
+              Navigator.of(context).pop(); // Cierra el Drawer
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CampaignCreationPage()), // Reemplaza con la pantalla que desees
+              );
+            },
+          ),
+          Padding(
+            padding: EdgeInsets.only(top:16.0),
+          ),
+          ListTile(
+            leading: Icon(Icons.arrow_back_outlined),
+            title: Text(
+              "Cerrar sesión",
+              textAlign: TextAlign.left,
+              overflow: TextOverflow.visible,
+              selectionColor: Colors.white,
+              style: GoogleFonts.roboto(
+                  textStyle:TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 20,
+                      color: Colors.black//Negro 1
+                  )
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context).pop(); // Cierra el Drawer
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => WelcomeScreen()), // Reemplaza con la pantalla que desees
+              );
+            },
+          ),
         ],
       ),
     );

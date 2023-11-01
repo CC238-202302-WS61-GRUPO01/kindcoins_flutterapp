@@ -15,6 +15,7 @@ class _ValidarFormWidgetState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 5, 151, 166),
         title: const Text("Iniciar Sesión"),
       ),
       body: Padding(
@@ -68,6 +69,9 @@ class _ValidarFormWidgetState extends State<LoginScreen> {
                   );
                 },
                 child: const Text('Inicia Sesión'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromARGB(255, 5, 151, 166),
+                ),
               ),
               SizedBox(height: 10),
               GestureDetector(
@@ -80,7 +84,7 @@ class _ValidarFormWidgetState extends State<LoginScreen> {
                 child: Text(
                   'Registrate aquí',
                   style: TextStyle(
-                    color: Colors.blue,
+                    color: Color.fromARGB(255, 5, 151, 166),
                     decoration: TextDecoration.underline,
                   ),
                 ),
