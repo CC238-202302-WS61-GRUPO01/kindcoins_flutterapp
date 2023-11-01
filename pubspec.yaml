@@ -16,6 +16,7 @@ dependencies:
   google_maps_flutter: ^2.5.0
   google_fonts: ^4.0.0 #Usen esto para la fuente
   cupertino_icons: ^1.0.2
+  flutter_credit_card: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -35,6 +36,7 @@ flutter:
     - assets/images/create_campaign/default_campaign_image.png
     - assets/images/home_images/hospital.png
     - assets/images/profile/cat-profile.jpg
+    - assets/images/home_images/puppys.png
     - assets/images/welcome_images/welcome-screen-image.png
     - assets/logo/kind_coins_logo.png
     - assets/images/profile/medalla-esmeralda.png
