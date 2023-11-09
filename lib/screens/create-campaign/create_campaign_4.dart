@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kindcoins_flutterapp/screens/create-campaign/components/plan_item.dart';
 import 'create_campaign_5.dart';
-import 'components/pago.dart';
+import '../payment/choose_payment_screen.dart';
 
 class PlanSelection extends StatefulWidget {
   const PlanSelection({super.key});
@@ -11,23 +11,23 @@ class PlanSelection extends StatefulWidget {
 }
 
 class _PlanSelectionState extends State<PlanSelection> {
-  _mostrarDialogoPago(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Proceso de Pago Premium'),
-          content: PasoPagoPremium(),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('Cerrar'),
-            ),
-          ],
-        );
-      },
+  int selectedIndex = 0;
+  _mostrarPantallaPago(BuildContext context, bool esGratis) {
+    if (esGratis) {
+      _goToPage5();
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ChoosePaymentScreen()),
+    );
+    }
+  }
+  void _goToPage5() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => CampaignPreview(),
+      ),
     );
   }
   @override
@@ -81,7 +81,22 @@ class _PlanSelectionState extends State<PlanSelection> {
                 textColor: Colors.white,
                 child: const Text("Siguiente"),
                 onPressed: () {
-                  _mostrarDialogoPago(context);
+                  String precio = "";
+                  switch (selectedIndex) {
+                    case 0:
+                      precio = "\$ 9.99";
+                      break;
+                    case 1:
+                      precio = "\$ 99.90";
+                      break;
+                    case 2:
+                      precio = "Gratis";
+                      break;
+                    default:
+                      break;
+                  }
+                  bool esGratis = precio.toLowerCase() == "gratis";
+                  _mostrarPantallaPago(context, esGratis);
                 },
               ),
             )
@@ -91,4 +106,3 @@ class _PlanSelectionState extends State<PlanSelection> {
     );
   }
 }
-
