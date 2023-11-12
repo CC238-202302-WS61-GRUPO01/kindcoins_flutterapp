@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kindcoins_flutterapp/screens/home/components/header.dart';
 
+import '../../services/api_service.dart';
+
 class PremiumScreen extends StatefulWidget {
   const PremiumScreen({Key? key}) : super(key: key);
 
@@ -9,8 +11,14 @@ class PremiumScreen extends StatefulWidget {
 }
 
 class _PremiumScreenState extends State<PremiumScreen> {
+
   @override
   Widget build(BuildContext context) {
+
+    ApiService apiService = ApiService(
+        "http://kindcoins-api.eastus.cloudapp.azure.com/api/v1/country");
+    Future response = apiService.fetchData();
+
     return Scaffold(
       appBar: Header(),
       body: Center(
@@ -28,6 +36,7 @@ class _PremiumScreenState extends State<PremiumScreen> {
                 ),
               ),
               SizedBox(height: 16),
+              //Ocultar este botón solo cuando no es premium
               ElevatedButton(
                 onPressed: () {
                   // Aquí puedes manejar la transición a la pantalla de cambio a premium
