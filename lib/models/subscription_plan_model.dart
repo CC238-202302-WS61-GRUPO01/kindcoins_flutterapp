@@ -6,4 +6,11 @@ class SubscriptionPlan {
     required this.id,
     required this.plan,
   });
+
+  factory SubscriptionPlan.fromJson(Map<String, dynamic> json) {
+    return SubscriptionPlan(
+        id: json['id'] as int,
+        plan: json['plan'] as String
+    );
+  }
 }
