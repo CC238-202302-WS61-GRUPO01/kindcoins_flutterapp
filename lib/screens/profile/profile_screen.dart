@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kindcoins_flutterapp/services/api_service.dart';
 import 'components/campaign_card.dart';
+import 'package:kindcoins_flutterapp/models/user_model.dart';
+import 'package:kindcoins_flutterapp/models/campaign_model.dart';
 
 class ProfileScreen extends StatefulWidget{
   const ProfileScreen({Key? key}) : super(key: key);
@@ -8,6 +11,27 @@ class ProfileScreen extends StatefulWidget{
 }
 
 class _ProfileScreen extends State<ProfileScreen> {
+  late Future<User> user;
+  late Future<Campaign> campaign;
+
+  int userId = 1;
+
+  @override
+  void initState() {
+    super.initState();
+    ApiService UserService;
+    ApiService CampaignService;
+    UserService = ApiService(
+        'http://kindcoins-api.eastus.cloudapp.azure.com/api/v1/users/$userId'
+    );
+    CampaignService=ApiService(
+        'http://kindcoins-api.eastus.cloudapp.azure.com/api/v1/campaigns/1'
+    );
+
+    user = UserService.fetchUser(userId);
+    campaign=CampaignService.fetchCampaignFromUserId(userId);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
