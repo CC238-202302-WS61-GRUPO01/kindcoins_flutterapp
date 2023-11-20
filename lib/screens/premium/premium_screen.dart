@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kindcoins_flutterapp/models/subscription_plan_model.dart';
 import 'package:kindcoins_flutterapp/models/user_model.dart';
 import 'package:kindcoins_flutterapp/screens/home/components/header.dart';
+import 'package:kindcoins_flutterapp/screens/payment/add_payment_screen.dart';
 
 import '../../services/api_service.dart';
 
@@ -62,7 +63,10 @@ class _PremiumScreenState extends State<PremiumScreen> {
                 columna.children.add(//Ocultar este botón solo cuando no es premium
                     ElevatedButton(
                       onPressed: () {
-                        // Aquí puedes manejar la transición a la pantalla de cambio a premium
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddPaymentScreen()));
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Color.fromARGB(255, 5, 151, 166),
