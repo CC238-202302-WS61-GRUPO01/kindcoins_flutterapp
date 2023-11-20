@@ -43,7 +43,7 @@ class _ProfileScreen extends State<ProfileScreen> {
         future: user,
         builder: (context,snapshot){
           if(snapshot.hasData){
-            User? current=snapshot.data;
+            User? active=snapshot.data;
             return ListView(
               children: [
                 Padding(
@@ -52,11 +52,11 @@ class _ProfileScreen extends State<ProfileScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       CircleAvatar(
-                        backgroundImage: AssetImage(current!.photo),
+                        backgroundImage: AssetImage(active!.photo),
                         radius: 50,
                       ),
                       SizedBox(height: 10),
-                      Text(current.firstName + ' ' + current.lastName),
+                      Text(active.firstName + ' ' + active.lastName),
                       Text('Lima, Perú'),
                     ],
                   ),
