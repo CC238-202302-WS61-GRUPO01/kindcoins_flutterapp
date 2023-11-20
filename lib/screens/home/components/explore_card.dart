@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../models/campaign_model.dart';
+
 class ExploreCard extends StatelessWidget {
-  final Map<String, dynamic> cardData;
+  final Future<Campaign> cardData;
 
   ExploreCard(this.cardData);
 
@@ -14,36 +16,43 @@ class ExploreCard extends StatelessWidget {
           Flexible(
             child: Container(
               child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Image.network(
-                      cardData['imageURL'] ?? '',
-                      height: 150,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        cardData['title'] ?? '',
-                        style: TextStyle(
-                            fontSize: 14.0, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(4.0),
-                      child: Text(
-                        cardData['description'] ?? '',
-                        style: TextStyle(
-                          fontSize: 12.0,
-                          fontWeight: FontWeight.normal,
+                child: FutureBuilder<Campaign>(
+                  future: cardData,
+                  builder: (context, snapshot){
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Image.network(
+                          snapshot.data?.headerPhoto ?? '',
+                          height: 150,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
                         ),
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            //cardData['title'] ?? '',
+                            snapshot.data?.name ?? '',
+                            style: TextStyle(
+                                fontSize: 14.0, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(4.0),
+                          child: Text(
+                            //cardData['description'] ?? '',
+                            snapshot.data?.description ?? '',
+                            style: TextStyle(
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.normal,
+                            ),
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ),
             ),

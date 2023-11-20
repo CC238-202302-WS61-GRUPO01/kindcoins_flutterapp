@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'package:http/http.dart' as http;
 import 'package:kindcoins_flutterapp/models/campaign_model.dart';
 import 'package:kindcoins_flutterapp/models/subscription_plan_model.dart';
@@ -79,6 +80,8 @@ class ApiService {
       throw Exception('Error al cargar los datos');
     }
   }
+
+  //NO SE OLVIDEN DE ELIMINAR ESTO. ESTO ES SOLO PARA TESTEO
 
   Future postData() async{
     http.post(
