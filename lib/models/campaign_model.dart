@@ -7,6 +7,7 @@ class Campaign {
   final String description;
   final int typeOfDonationId;
   final int goal;
+  final int userId;
 
   Campaign({
     required this.id,
@@ -17,5 +18,19 @@ class Campaign {
     required this.description,
     required this.typeOfDonationId,
     required this.goal,
+    required this.userId,
   });
+
+  factory Campaign.fromJson(Map<String, dynamic> json) {
+    return Campaign(
+        id: json['id'] as int,
+        name: json['name'] as String,
+        slogan: json['slogan'] as String,
+        headerPhoto: json['headerPhoto'] as String,
+        additionalPhoto: json['additionalPhoto'] as String,
+        description: json['description'] as String,
+        typeOfDonationId: json['typeOfDonationId'] as int,
+        goal: json['goal'] as int,
+        userId: json['userId'] as int);
+  }
 }
