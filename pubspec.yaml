@@ -17,6 +17,7 @@ dependencies:
   google_fonts: ^4.0.0 #Usen esto para la fuente
   cupertino_icons: ^1.0.2
   flutter_credit_card: ^4.0.1
+  geolocator: ^8.0.3
 
 dev_dependencies:
   flutter_test:
