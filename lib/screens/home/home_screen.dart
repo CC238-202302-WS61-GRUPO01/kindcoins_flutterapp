@@ -63,16 +63,18 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    explorigCampaigns = [];
+    trendCampaigns = [];
     ApiService campaignService;
     campaignService = ApiService(
-        'http://kindcoins-api.eastus.cloudapp.azure.com/api/v1/campaigns/1'
+        'https://kindcoins-api.azurewebsites.net/api/v1/campaigns'
     );
-    explorigCampaigns.add(campaignService.fetchCampaign(1));
     explorigCampaigns.add(campaignService.fetchCampaign(2));
     explorigCampaigns.add(campaignService.fetchCampaign(3));
+    explorigCampaigns.add(campaignService.fetchCampaign(4));
 
-    trendCampaigns.add(campaignService.fetchCampaign(1));
-    trendCampaigns.add(campaignService.fetchCampaign(2));
+    trendCampaigns.add(campaignService.fetchCampaign(5));
+    trendCampaigns.add(campaignService.fetchCampaign(6));
   }
 
   @override

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:ffi';
+//import 'dart:ffi';
 import 'package:http/http.dart' as http;
 import 'package:kindcoins_flutterapp/models/campaign_model.dart';
 import 'package:kindcoins_flutterapp/models/subscription_plan_model.dart';
@@ -23,7 +23,7 @@ class ApiService {
 
   Future<User> fetchUser(int id) async {
     final response = await http
-        .get(Uri.parse('http://kindcoins-api.eastus.cloudapp.azure.com/api/v1/users/$id'));
+        .get(Uri.parse('https://kindcoins-api.azurewebsites.net/api/v1/users/$id'));
 
     if (response.statusCode == 200) {
       return User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
@@ -33,7 +33,7 @@ class ApiService {
   }
   Future<SubscriptionPlan> fetchPlanfromUser(int userId) async{
     final response = await http
-        .get(Uri.parse('http://kindcoins-api.eastus.cloudapp.azure.com/api/v1/users/$userId')
+        .get(Uri.parse('https://kindcoins-api.azurewebsites.net/api/v1/users/$userId')
     );
     if (response.statusCode == 200) {
       User user = User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
@@ -46,7 +46,7 @@ class ApiService {
 
   Future<Campaign> fetchCampaign(int id) async{
     final response = await http
-        .get(Uri.parse('http://kindcoins-api.eastus.cloudapp.azure.com/api/v1/campaigns/$id'));
+        .get(Uri.parse('https://kindcoins-api.azurewebsites.net/api/v1/campaigns/$id'));
 
     if (response.statusCode == 200) {
       return Campaign.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
@@ -57,7 +57,7 @@ class ApiService {
 
   Future<Campaign> fetchCampaignFromUserId(int userId) async{
     final response = await http
-        .get(Uri.parse('http://kindcoins-api.eastus.cloudapp.azure.com/api/v1/campaigns/$userId'));
+        .get(Uri.parse('https://kindcoins-api.azurewebsites.net/api/v1/campaigns/$userId'));
 
     if (response.statusCode == 200) {
       Campaign campaign = Campaign.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
@@ -71,7 +71,7 @@ class ApiService {
   Future<SubscriptionPlan> fetchPlan(int id) async {
     final response = await http
         .get(Uri.parse(
-        'http://kindcoins-api.eastus.cloudapp.azure.com/api/v1/suscriptionplans'
+        'https://kindcoins-api.azurewebsites.net/api/v1/suscriptionplans'
     ));
 
     if (response.statusCode == 200) {
@@ -85,7 +85,7 @@ class ApiService {
 
   Future postData() async{
     http.post(
-      Uri.parse('http://kindcoins-api.eastus.cloudapp.azure.com/api/v1/suscriptionplans'),
+      Uri.parse('https://kindcoins-api.azurewebsites.net/api/v1/suscriptionplans'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -94,7 +94,7 @@ class ApiService {
       }),
     );
     http.post(
-      Uri.parse('http://kindcoins-api.eastus.cloudapp.azure.com/api/v1/suscriptionplans'),
+      Uri.parse('https://kindcoins-api.azurewebsites.net/api/v1/suscriptionplans'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -103,7 +103,7 @@ class ApiService {
       }),
     );
     http.post(
-      Uri.parse('http://kindcoins-api.eastus.cloudapp.azure.com/api/v1/users'),
+      Uri.parse('https://kindcoins-api.azurewebsites.net/api/v1/users'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

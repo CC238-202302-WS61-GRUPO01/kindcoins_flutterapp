@@ -5,6 +5,7 @@ import 'package:kindcoins_flutterapp/screens/home/components/header.dart';
 import 'package:kindcoins_flutterapp/screens/payment/add_payment_screen.dart';
 
 import '../../services/api_service.dart';
+import '../home/components/side_nav_bar.dart';
 
 class PremiumScreen extends StatefulWidget {
   const PremiumScreen({Key? key}) : super(key: key);
@@ -38,6 +39,7 @@ class _PremiumScreenState extends State<PremiumScreen> {
 
     return Scaffold(
       appBar: Header(),
+      drawer: SideNavBar(),
       body: Center(
         child: FutureBuilder<SubscriptionPlan>(
           future: plan,
