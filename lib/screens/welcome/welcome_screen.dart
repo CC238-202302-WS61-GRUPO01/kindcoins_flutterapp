@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../login/login_screen.dart';
 import '../register/validate_code_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../register/register_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -36,7 +37,7 @@ class WelcomeScreen extends StatelessWidget {
                 Navigator.of(context).pop(); // Cierra el Drawer
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ValidarCodigoScreen()),
+                  MaterialPageRoute(builder: (context) => RegistroScreen()),
                 );
               },
               child: Text('Registro'),
