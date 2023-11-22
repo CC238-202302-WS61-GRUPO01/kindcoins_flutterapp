@@ -1,19 +1,30 @@
 class Post {
-  final int id;
-  final int userId;
-  final String comment;
-  final String url;
-  final String photo;
-  final int likes;
-  final int shares;
+  int? id;
+  int? userId;
+  String? comment;
+  String? url;
+  String? photo;
+  int? likes;
+  int? shares;
 
   Post({
-    required this.id,
-    required this.userId,
-    required this.comment,
-    required this.url,
-    required this.photo,
-    required this.likes,
-    required this.shares,
+    this.id,
+    this.userId,
+    this.comment,
+    this.url,
+    this.photo,
+    this.likes,
+    this.shares,
   });
+  factory Post.fromJson(Map<String, dynamic> json) {
+    return Post(
+        id: json['id'] as int,
+        userId: int.parse(json['userId'] as String), // Convert userId from String to int
+        comment: json['comment'] as String,
+        photo: json['photo'] as String,
+        url: json['url'] as String,
+        likes: json['likes'] as int,
+        shares: json['shares'] as int
+    );
+  }
 }

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:kindcoins_flutterapp/services/api_service.dart';
 import 'package:kindcoins_flutterapp/models/campaign_model.dart';
+import 'package:kindcoins_flutterapp/models/campaign_request.dart';
 
 class CampaignService {
   final String apiUrl;
@@ -31,5 +32,21 @@ class CampaignService {
     final List<Campaign> userCampaigns = await fetchUserCampaigns();
     final singleCampaign = userCampaigns.firstWhere((campaign) => campaign.id == campaignId);
     return singleCampaign;
+  }
+
+  Future<Campaign> createCampaign(CampaignRequest campaign) async {
+    print(campaign.toString());
+
+    final response = await http.post(
+        Uri.parse('https://kindcoins-api.azurewebsites.net/api/v1/campaigns'),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(campaign));
+
+    if (response.statusCode == 200) {
+      final createdCampaign = Campaign.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+      return createdCampaign;
+    } else {
+      throw Exception('Error al crear campaña');
+    }
   }
 }
