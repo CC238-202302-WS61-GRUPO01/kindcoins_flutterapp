@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: "KindCoins",
-      home: CampaignCreationPage(),
+      home: WelcomeScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

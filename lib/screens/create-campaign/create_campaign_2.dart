@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kindcoins_flutterapp/screens/create-campaign/components/campaign_provider.dart';
+import 'package:provider/provider.dart';
 import 'create_campaign_3.dart';
 
 class CampaignCreationPage2 extends StatefulWidget {
@@ -28,6 +30,8 @@ class _CampaignCreationPage2State extends State<CampaignCreationPage2> {
 
   @override
   Widget build(BuildContext context) {
+    final CampaignProvider campaignProvider =
+        Provider.of<CampaignProvider>(context);
     return Scaffold(
       backgroundColor: Color(0xFFEBFFFD),
       appBar: AppBar(
@@ -77,13 +81,12 @@ class _CampaignCreationPage2State extends State<CampaignCreationPage2> {
                   maxLines: null, // Allow multiple lines
                   controller: _descriptionController,
                   onChanged: (value) {
-                    setState(
-                            () {}); // Rebuild the UI to display character count
+                    // Rebuild the UI to display character count
                   },
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     counterText:
-                    '${_descriptionController.text.length}/100', // Display character count
+                        '${_descriptionController.text.length}/100', // Display character count
                   ),
                 ),
               ),
@@ -180,14 +183,14 @@ class _CampaignCreationPage2State extends State<CampaignCreationPage2> {
                 ),
                 child: Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   child: TextFormField(
                     inputFormatters: [
                       FilteringTextInputFormatter.allow(RegExp(
                           r'^\d{1,10}(\.\d{0,2})?$')), // Limit input to numbers with max of 10 characters and allow up to 2 decimal places
                     ],
                     keyboardType:
-                    TextInputType.numberWithOptions(decimal: true),
+                        TextInputType.numberWithOptions(decimal: true),
                     controller: _goalController,
                     onChanged: (value) {
                       _goalTextLengthNotifier.value = value.length;
@@ -221,9 +224,16 @@ class _CampaignCreationPage2State extends State<CampaignCreationPage2> {
               children: [
                 ElevatedButton(
                   onPressed: () {
+                    campaignProvider.campaignRequest
+                        .setDescription(_descriptionController.text);
+                    campaignProvider.campaignRequest
+                        .setGoal(int.parse(_goalController.text));
+                    campaignProvider.campaignRequest.setTypeOfDonationId(1);
+                    print(campaignProvider.campaignRequest.toJson());
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ReceptionConfiguration()),
+                      MaterialPageRoute(
+                          builder: (context) => ReceptionConfiguration()),
                     );
                   },
                   child: Text('Siguiente'),
@@ -241,9 +251,9 @@ class _CampaignCreationPage2State extends State<CampaignCreationPage2> {
 
   Widget buildDonationTypeItem(
       {required IconData icon,
-        required String label,
-        required bool isSelected,
-        required VoidCallback onTap}) {
+      required String label,
+      required bool isSelected,
+      required VoidCallback onTap}) {
     return GestureDetector(
       onTap: onTap,
       child: Column(

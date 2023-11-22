@@ -42,4 +42,44 @@ class CampaignRequest {
     data['userId'] = userId;
     return data;
   }
+
+  //Set the campaign name
+  void setName(String name) {
+    this.name = name;
+  }
+
+  //Set the campaign slogan
+  void setSlogan(String slogan) {
+    this.slogan = slogan;
+  }
+
+  //Set the campaign header photo
+  void setHeaderPhoto(String headerPhoto) {
+    this.headerPhoto = headerPhoto;
+  }
+
+  //Set the campaign additional photo
+  void setAdditionalPhoto(String additionalPhoto) {
+    this.additionalPhoto = additionalPhoto;
+  }
+
+  //Set the campaign description
+  void setDescription(String description) {
+    this.description = description;
+  }
+
+  //Set the campaign type of donation
+  void setTypeOfDonationId(int typeOfDonationId) {
+    this.typeOfDonationId = typeOfDonationId;
+  }
+
+  //Set the campaign goal
+  void setGoal(int goal) {
+    this.goal = goal;
+  }
+
+  //Set the campaign user id
+  void setUserId(int userId) {
+    this.userId = userId;
+  }
 }
