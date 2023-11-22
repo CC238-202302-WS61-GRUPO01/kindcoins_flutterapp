@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kindcoins_flutterapp/screens/register/validate_code_register.dart';
 import 'package:kindcoins_flutterapp/screens/home/home_screen.dart';
+import 'package:kindcoins_flutterapp/services/api_service.dart';
+import 'package:kindcoins_flutterapp/services/user_service.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -13,6 +15,9 @@ class _ValidarFormWidgetState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ApiService apiService = new ApiService("");
+    apiService.fetchAllUsers();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 5, 151, 166),
@@ -60,13 +65,18 @@ class _ValidarFormWidgetState extends State<LoginScreen> {
               ),
               SizedBox(height: 10),
               ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => HomeScreen(),
-                    ),
-                  );
+                onPressed: () async {
+                  var isCorrect = await apiService.loginUser(
+                      emailController.text, passwordController.text);
+
+                  if (isCorrect) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomeScreen(),
+                      ),
+                    );
+                  }
                 },
                 child: const Text('Inicia Sesión'),
                 style: ElevatedButton.styleFrom(
@@ -78,7 +88,8 @@ class _ValidarFormWidgetState extends State<LoginScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ValidateCodeRegisterScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => ValidateCodeRegisterScreen()),
                   );
                 },
                 child: Text(
