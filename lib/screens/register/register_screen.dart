@@ -3,6 +3,7 @@ import 'package:kindcoins_flutterapp/models/user_model.dart';
 import 'package:kindcoins_flutterapp/models/user_request.dart';
 import 'package:kindcoins_flutterapp/screens/home/home_screen.dart';
 import 'package:kindcoins_flutterapp/services/api_service.dart';
+import 'package:kindcoins_flutterapp/screens/register/terms_condition.dart';
 
 class RegistroScreen extends StatefulWidget {
   @override
@@ -266,28 +267,42 @@ class _RegistroBState extends State<RegistroScreen> {
                     ),
                     //Espacio extra
                     ElevatedButton(
-                      onPressed: () {
-                        if (_checkControllers()) {
-                          var user = UserRequest(
-                              firstName: nameController.text,
-                              lastName: lastNameController.text,
-                              photo:
-                              "https://cdn-icons-png.flaticon.com/512/21/21104.png",
-                              dni: dniController.text,
-                              phone: phoneController.text,
-                              email: emailController.text,
-                              password: passwordController.text,
-                              suscriptionPlanId: 1);
+                      onPressed: () async {
+                        final bool? termsAndConditionsAccepted =
+                            await showDialog<bool>(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              const TermsAndConditionsDialog(),
+                        );
 
-                          apiService.createUser(user);
+                        if (termsAndConditionsAccepted == false) {
+                          return;
+                        }
+
+                        if (_checkControllers()) {
+                          final UserRequest user = UserRequest(
+                            firstName: nameController.text,
+                            lastName: lastNameController.text,
+                            photo:
+                                'https://cdn-icons-png.flaticon.com/512/21/21104.png',
+                            dni: dniController.text,
+                            phone: phoneController.text,
+                            email: emailController.text,
+                            password: passwordController.text,
+                            suscriptionPlanId: 1,
+                          );
+
+                          await apiService.createUser(user);
 
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomeScreen()));
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomeScreen(),
+                            ),
+                          );
                         }
                       },
-                      child: const Text('Registrar'),
+                      child: const Text('Continuar'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromARGB(255, 5, 151, 166),
                       ),
