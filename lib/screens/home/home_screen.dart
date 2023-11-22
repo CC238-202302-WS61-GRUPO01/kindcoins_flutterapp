@@ -70,10 +70,10 @@ class _HomeScreenState extends State<HomeScreen> {
         'https://kindcoins-api.azurewebsites.net/api/v1/campaigns'
     );
     explorigCampaigns.add(campaignService.fetchCampaign(2));
-    explorigCampaigns.add(campaignService.fetchCampaign(3));
+    explorigCampaigns.add(campaignService.fetchCampaign(5));
     explorigCampaigns.add(campaignService.fetchCampaign(4));
 
-    trendCampaigns.add(campaignService.fetchCampaign(5));
+    trendCampaigns.add(campaignService.fetchCampaign(3));
     trendCampaigns.add(campaignService.fetchCampaign(6));
   }
 

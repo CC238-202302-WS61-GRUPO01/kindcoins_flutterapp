@@ -27,11 +27,11 @@ class Campaign {
       name: json['name'] as String,
       slogan: json['slogan'] as String,
       headerPhoto: json['headerPhoto'] as String,
-      additionalPhoto: json['additionalPhoto'] as String,
+      additionalPhoto: json['aditionalPhoto'] as String,
       description: json['description'] as String,
-      typeOfDonationId: json['typeOfDonationId'] as int,
+      typeOfDonationId: json['typeOfDonation']['id'] as int,
       goal: json['goal'] as int,
-      userId: json['userId'] as int
+      userId: json['user']['id'] as int
     );
   }
 }

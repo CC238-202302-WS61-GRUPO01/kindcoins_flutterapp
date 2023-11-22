@@ -19,39 +19,44 @@ class ExploreCard extends StatelessWidget {
                 child: FutureBuilder<Campaign>(
                   future: cardData,
                   builder: (context, snapshot){
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Image.network(
-                          snapshot.data?.headerPhoto ?? '',
-                          height: 150,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            //cardData['title'] ?? '',
-                            snapshot.data?.name ?? '',
-                            style: TextStyle(
-                                fontSize: 14.0, fontWeight: FontWeight.bold),
+                    if (snapshot.hasData){
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Image.network(
+                            snapshot.data!.headerPhoto,
+                            height: 150,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(4.0),
-                          child: Text(
-                            //cardData['description'] ?? '',
-                            snapshot.data?.description ?? '',
-                            style: TextStyle(
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.normal,
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              snapshot.data!.name,
+                              style: TextStyle(
+                                  fontSize: 14.0, fontWeight: FontWeight.bold),
                             ),
-                            maxLines: 3,
-                            overflow: TextOverflow.ellipsis,
                           ),
-                        ),
-                      ],
-                    );
+                          Padding(
+                            padding: EdgeInsets.all(4.0),
+                            child: Text(
+                              snapshot.data!.description,
+                              style: TextStyle(
+                                fontSize: 12.0,
+                                fontWeight: FontWeight.normal,
+                              ),
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      );
+                    }
+                    else
+                    if(snapshot.hasError){
+                      return Text('${snapshot.error}');
+                    }
+                    return const CircularProgressIndicator();
                   },
                 ),
               ),
