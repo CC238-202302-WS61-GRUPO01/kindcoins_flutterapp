@@ -25,31 +25,40 @@ class SideNavBar extends StatelessWidget {
                   color: Color.fromARGB(255, 5, 151, 166)//Color Primario
               ),
               padding: EdgeInsets.all(8.0),
-              child: Row(
-                children: <Widget>[
-                  ClipOval(
-                    child: Image(
-                      image: AssetImage("assets/images/profile/cat-profile.jpg"),
-                      width: 80.0,
-                      height: 80.0,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right:8.0),
-                  ),
-                  Text(
-                    "Usuario prueba",
-                    textAlign: TextAlign.right,
-                    style: GoogleFonts.roboto(
-                        textStyle:TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Colors.black//Negro 1
-                        )
-                    ),
-                  ),
-                ],
+              child: FutureBuilder<User>(
+                future: profileUser,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
+                    return Row(
+                      children: <Widget>[
+                        ClipOval(
+                          child: Image.network(
+                            snapshot.data!.photo,
+                            width: 80.0,
+                            height: 80.0,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 8.0),
+                        ),
+                        Text(
+                          "${snapshot.data!.firstName} ${snapshot.data!.lastName}",
+                          textAlign: TextAlign.right,
+                          style: GoogleFonts.roboto(
+                            textStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.black, // Negro 1
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+                },
               )
           ),
           Padding(padding: EdgeInsets.only(top:16.0),),
