@@ -23,15 +23,14 @@ class Campaign {
 
   factory Campaign.fromJson(Map<String, dynamic> json) {
     return Campaign(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      slogan: json['slogan'] as String,
-      headerPhoto: json['headerPhoto'] as String,
-      additionalPhoto: json['aditionalPhoto'] as String,
-      description: json['description'] as String,
-      typeOfDonationId: json['typeOfDonation']['id'] as int,
-      goal: json['goal'] as int,
-      userId: json['user']['id'] as int
-    );
+        id: json['id'] as int,
+        name: json['name'] as String,
+        slogan: json['slogan'] as String,
+        headerPhoto: json['headerPhoto'] as String,
+        additionalPhoto: json['additionalPhoto'] as String,
+        description: json['description'] as String,
+        typeOfDonationId: json['typeOfDonationId'] as int,
+        goal: json['goal'] as int,
+        userId: json['userId'] as int);
   }
 }

@@ -9,8 +9,6 @@ class SubscriptionPlan {
 
   factory SubscriptionPlan.fromJson(Map<String, dynamic> json) {
     return SubscriptionPlan(
-        id: json['id'] as int,
-        plan: json['plan'] as String
-    );
+        id: json['id'] as int, plan: json['plan'] as String);
   }
 }
