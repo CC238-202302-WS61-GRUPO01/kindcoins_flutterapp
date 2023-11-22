@@ -80,43 +80,4 @@ class ApiService {
       throw Exception('Error al cargar los datos');
     }
   }
-
-  //NO SE OLVIDEN DE ELIMINAR ESTO. ESTO ES SOLO PARA TESTEO
-
-  Future postData() async{
-    http.post(
-      Uri.parse('https://kindcoins-api.azurewebsites.net/api/v1/suscriptionplans'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, String>{
-        'plan': 'Free',
-      }),
-    );
-    http.post(
-      Uri.parse('https://kindcoins-api.azurewebsites.net/api/v1/suscriptionplans'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, String>{
-        'plan': 'Premium',
-      }),
-    );
-    http.post(
-      Uri.parse('https://kindcoins-api.azurewebsites.net/api/v1/users'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, dynamic>{
-        "firstName": "Andrea",
-        "lastName": "Alfaro",
-        "dni": "76942955",
-        "phone": "997806654",
-        "email": "andrea@gmail.com",
-        "password": "andrea1234",
-        "photo": "https://i.pinimg.com/564x/60/5e/46/605e461ca634e868085d1a3d9d02b1ea.jpg",
-        "suscriptionPlanId": 1
-      }),
-    );
-  }
 }

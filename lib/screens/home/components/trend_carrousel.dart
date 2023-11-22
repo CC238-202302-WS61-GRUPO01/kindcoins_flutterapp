@@ -35,7 +35,7 @@ class TrendCarrousel extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.8,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(snapshot.data!.headerPhoto),
+                        image: NetworkImage(snapshot.data!.headerPhoto),
                         fit: BoxFit.cover,
                       ),
                     ),
