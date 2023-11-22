@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import '../../models/campaign_model.dart';
+import '../../services/api_service.dart';
 import '../home/components/explore_card.dart';
 import '../home/components/explore_carrousel.dart';
 import '../home/components/header.dart';
 import '../home/components/trend_carrousel.dart';
 import '../home/components/side_nav_bar.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  HomeScreen({super.key});
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final List<Map<String, dynamic>> explorarItems = [
     {
       'imageURL':
@@ -29,6 +37,7 @@ class HomeScreen extends StatelessWidget {
       'Las donaciones proporcionarán apoyo a los hospitales para que puedan comprar equipos médicos actuales y plenamente funcionales.',
     }
   ];
+
   final List<Map<String, dynamic>> items = [
     {
       'imageURL': 'assets/images/home_images/hospital.png',
@@ -48,7 +57,26 @@ class HomeScreen extends StatelessWidget {
     },*/
   ];
 
-  HomeScreen({super.key});
+  late List<Future<Campaign>> explorigCampaigns;
+  late List<Future<Campaign>> trendCampaigns;
+
+  @override
+  void initState() {
+    super.initState();
+    explorigCampaigns = [];
+    trendCampaigns = [];
+    ApiService campaignService;
+    campaignService = ApiService(
+        'https://kindcoins-api.azurewebsites.net/api/v1/campaigns'
+    );
+    explorigCampaigns.add(campaignService.fetchCampaign(2));
+    explorigCampaigns.add(campaignService.fetchCampaign(5));
+    explorigCampaigns.add(campaignService.fetchCampaign(4));
+
+    trendCampaigns.add(campaignService.fetchCampaign(3));
+    trendCampaigns.add(campaignService.fetchCampaign(6));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +101,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          TrendCarrousel(items),
+          TrendCarrousel(trendCampaigns),
           Container(
             margin: const EdgeInsets.only(right: 16.0),
             width: double.infinity,
@@ -92,7 +120,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           ExploreCarrousel(
-            explorarItems.map((item) => ExploreCard(item)).toList(),
+            explorigCampaigns.map((item) => ExploreCard(item)).toList(),
           ),
         ],
       ),

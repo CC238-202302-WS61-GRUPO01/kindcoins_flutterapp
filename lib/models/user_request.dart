@@ -10,13 +10,13 @@ class UserRequest {
 
   UserRequest(
       {this.firstName,
-      this.lastName,
-      this.dni,
-      this.phone,
-      this.email,
-      this.password,
-      this.photo,
-      this.suscriptionPlanId});
+        this.lastName,
+        this.dni,
+        this.phone,
+        this.email,
+        this.password,
+        this.photo,
+        this.suscriptionPlanId});
 
   UserRequest.fromJson(Map<String, dynamic> json) {
     firstName = json['firstName'];

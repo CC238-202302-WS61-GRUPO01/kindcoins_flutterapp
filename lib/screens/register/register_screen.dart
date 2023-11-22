@@ -272,7 +272,7 @@ class _RegistroBState extends State<RegistroScreen> {
                               firstName: nameController.text,
                               lastName: lastNameController.text,
                               photo:
-                                  "https://cdn-icons-png.flaticon.com/512/21/21104.png",
+                              "https://cdn-icons-png.flaticon.com/512/21/21104.png",
                               dni: dniController.text,
                               phone: phoneController.text,
                               email: emailController.text,
