@@ -6,6 +6,16 @@ import 'package:kindcoins_flutterapp/models/subscription_plan_model.dart';
 import 'package:kindcoins_flutterapp/models/user_model.dart';
 import 'package:kindcoins_flutterapp/models/user_request.dart';
 
+int? userId;
+
+void setUserID(int id){
+  userId = id;
+}
+
+int? getUserId(){
+  return userId;
+}
+
 class ApiService {
   final String apiUrl;
 
@@ -33,7 +43,10 @@ class ApiService {
         body: jsonEncode(user));
 
     if (response.statusCode == 200) {
-      return User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+      final createdUser =
+      User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+      userId = createdUser.id; // Almacena la ID del usuario autenticado
+      return createdUser;
     } else {
       throw Exception('Error al crear usuario');
     }
@@ -48,12 +61,29 @@ class ApiService {
 
       for (var element in users) {
         if (element["email"] == email && element["password"] == password) {
+          userId = element["id"] as int;
           return true;
         }
       }
       return false;
     } else {
       return false;
+    }
+  }
+
+  Future<User> getProfile() async {
+    if (userId != null) {
+      final response = await http.get(
+        Uri.parse('https://kindcoins-api.azurewebsites.net/api/v1/users/$userId'),
+      );
+
+      if (response.statusCode == 200) {
+        return User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+      } else {
+        throw Exception('Error al obtener el perfil del usuario');
+      }
+    } else {
+      throw Exception('ID de usuario no disponible. Inicia sesión primero.');
     }
   }
 

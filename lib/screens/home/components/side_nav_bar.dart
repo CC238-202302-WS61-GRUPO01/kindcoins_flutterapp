@@ -6,13 +6,17 @@ import '../../profile/profile_screen.dart';
 import '../../premium/premium_screen.dart';
 import '../../welcome/welcome_screen.dart';
 import '../../post/post_screen.dart';
+import '../../../services/api_service.dart';
+import '../../../models/user_model.dart';
 
 class SideNavBar extends StatelessWidget {
   const SideNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(//Quitar el const más tarde
+    ApiService apiService = new ApiService("");
+    Future<User> profileUser = apiService.getProfile();
+    return Drawer(
       backgroundColor: Color.fromARGB(255, 235, 255, 253),//Color Secundario
       child: ListView(
         children: <Widget>[
