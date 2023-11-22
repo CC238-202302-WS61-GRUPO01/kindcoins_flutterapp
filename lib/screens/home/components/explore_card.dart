@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../../models/campaign_model.dart';
+import '../../donation/see_campaign_to_donate.dart';
 
 class ExploreCard extends StatelessWidget {
   final Future<Campaign> cardData;
@@ -9,6 +9,8 @@ class ExploreCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Campaign? _campaign;
+
     return Card(
       margin: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
       child: Column(
@@ -18,8 +20,9 @@ class ExploreCard extends StatelessWidget {
               child: SingleChildScrollView(
                 child: FutureBuilder<Campaign>(
                   future: cardData,
-                  builder: (context, snapshot){
-                    if (snapshot.hasData){
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      _campaign = snapshot.data;
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -51,9 +54,7 @@ class ExploreCard extends StatelessWidget {
                           ),
                         ],
                       );
-                    }
-                    else
-                    if(snapshot.hasError){
+                    } else if (snapshot.hasError) {
                       return Text('${snapshot.error}');
                     }
                     return const CircularProgressIndicator();
@@ -66,7 +67,13 @@ class ExploreCard extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: ElevatedButton(
               onPressed: () {
-                // Acción del botón
+                if (_campaign != null) {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => CampaignDetailsScreen(campaign: _campaign!),
+                    ),
+                  );
+                }
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF0597A6),

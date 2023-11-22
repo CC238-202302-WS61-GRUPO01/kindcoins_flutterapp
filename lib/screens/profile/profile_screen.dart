@@ -76,16 +76,24 @@ class ProfileScreen extends StatelessWidget {
                     }
                   },
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AllCampaignsScreen(userId: snapshot.data!.id),
-                      ),
-                    );
-                  },
-                  child: Text('Ver más campañas'),
+                Container(
+                  width: double.infinity, // Ancho máximo
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AllCampaignsScreen(userId: snapshot.data!.id),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF0597A6),
+                      minimumSize: Size.fromHeight(40),
+                    ),
+                    child: Text('Ver más campañas'),
+                  ),
                 ),
               ],
             );
