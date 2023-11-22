@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kindcoins_flutterapp/models/user_model.dart';
 import 'package:kindcoins_flutterapp/models/user_request.dart';
 import 'package:kindcoins_flutterapp/screens/home/home_screen.dart';
+import 'package:kindcoins_flutterapp/screens/register/terms_condition.dart';
 import 'package:kindcoins_flutterapp/services/api_service.dart';
 
 class RegistroScreen extends StatefulWidget {
@@ -266,13 +267,17 @@ class _RegistroBState extends State<RegistroScreen> {
                     ),
                     //Espacio extra
                     ElevatedButton(
-                      onPressed: () {
-                        if (_checkControllers()) {
+                      onPressed: () async {
+                        bool? accepted = await showDialog<bool>(
+                            context: context,
+                            builder: (BuildContext context) =>
+                                const TermsAndConditionsDialog());
+                        if (_checkControllers() && accepted == true) {
                           var user = UserRequest(
                               firstName: nameController.text,
                               lastName: lastNameController.text,
                               photo:
-                              "https://cdn-icons-png.flaticon.com/512/21/21104.png",
+                                  "https://cdn-icons-png.flaticon.com/512/21/21104.png",
                               dni: dniController.text,
                               phone: phoneController.text,
                               email: emailController.text,
@@ -285,6 +290,16 @@ class _RegistroBState extends State<RegistroScreen> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => HomeScreen()));
+                        } else if (accepted == false) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text(
+                                      "Debe aceptar los términos y condiciones")));
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content:
+                                      Text("Debe completar todos los campos")));
                         }
                       },
                       child: const Text('Registrar'),

@@ -20,7 +20,7 @@ class ExploreCarrousel extends StatelessWidget {
         enlargeCenterPage: false,
         pageSnapping: true, // Desplazarse de una en una
       ),
-      items: cards.length > 2 ? cards : cards.reversed.toList(),
+      items: cards, //.length > 2 ? cards : cards.reversed.toList()
     );
   }
 }

@@ -17,24 +17,24 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Map<String, dynamic>> explorarItems = [
     {
       'imageURL':
-      'https://media.istockphoto.com/id/115071061/es/foto/ni%C3%B1o-de-asia-en-laos.jpg?s=612x612&w=is&k=20&c=9YI3pRREapPsZxUkN5Y4bJ0DsfcS_s415TxEFRTUdcM=',
+          'https://media.istockphoto.com/id/115071061/es/foto/ni%C3%B1o-de-asia-en-laos.jpg?s=612x612&w=is&k=20&c=9YI3pRREapPsZxUkN5Y4bJ0DsfcS_s415TxEFRTUdcM=',
       'title': 'Alimenta familias',
       'description':
-      'Las comidas compartidas proporcionarán a las familias afectadas por la guerra un apoyo en efectivo para que puedan comprar alimentos en tiendas locales.',
+          'Las comidas compartidas proporcionarán a las familias afectadas por la guerra un apoyo en efectivo para que puedan comprar alimentos en tiendas locales.',
     },
     {
       'imageURL':
-      'https://media.istockphoto.com/id/1599017115/es/foto/ayuda-de-agua-potable-para-residentes-afectados-por-la-sequ%C3%ADa-en-indonesia.jpg?s=612x612&w=is&k=20&c=jNV3cbZ5tGL_O1qCEEw1zJOyxBoM8fVAppOd73zvE-Q=',
+          'https://media.istockphoto.com/id/1599017115/es/foto/ayuda-de-agua-potable-para-residentes-afectados-por-la-sequ%C3%ADa-en-indonesia.jpg?s=612x612&w=is&k=20&c=jNV3cbZ5tGL_O1qCEEw1zJOyxBoM8fVAppOd73zvE-Q=',
       'title': 'Agua potable',
       'description':
-      'Las donaciones proporcionarán apoyo a los afectados por la sequias.',
+          'Las donaciones proporcionarán apoyo a los afectados por la sequias.',
     },
     {
       'imageURL':
-      'https://media.istockphoto.com/id/185096067/es/foto/oscuridad-hospital-habitaci%C3%B3n.jpg?s=612x612&w=is&k=20&c=SHaBVZMEqKnPRf7QDXsc-sTe03cU-T4UAv0QfLeZjYk=',
+          'https://media.istockphoto.com/id/185096067/es/foto/oscuridad-hospital-habitaci%C3%B3n.jpg?s=612x612&w=is&k=20&c=SHaBVZMEqKnPRf7QDXsc-sTe03cU-T4UAv0QfLeZjYk=',
       'title': 'Equipo médico para hospitales',
       'description':
-      'Las donaciones proporcionarán apoyo a los hospitales para que puedan comprar equipos médicos actuales y plenamente funcionales.',
+          'Las donaciones proporcionarán apoyo a los hospitales para que puedan comprar equipos médicos actuales y plenamente funcionales.',
     }
   ];
 
@@ -66,12 +66,13 @@ class _HomeScreenState extends State<HomeScreen> {
     explorigCampaigns = [];
     trendCampaigns = [];
     ApiService campaignService;
-    campaignService = ApiService(
-        'https://kindcoins-api.azurewebsites.net/api/v1/campaigns'
-    );
+    campaignService =
+        ApiService('https://kindcoins-api.azurewebsites.net/api/v1/campaigns');
     explorigCampaigns.add(campaignService.fetchCampaign(2));
     explorigCampaigns.add(campaignService.fetchCampaign(5));
     explorigCampaigns.add(campaignService.fetchCampaign(4));
+    explorigCampaigns.add(campaignService.fetchCampaign(7));
+    explorigCampaigns.add(campaignService.fetchCampaign(8));
 
     trendCampaigns.add(campaignService.fetchCampaign(3));
     trendCampaigns.add(campaignService.fetchCampaign(6));
@@ -88,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(
             width: double.infinity,
             padding:
-            const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             decoration: const BoxDecoration(
               color: Color(0xFFEBFFFD),
             ),
@@ -106,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
             margin: const EdgeInsets.only(right: 16.0),
             width: double.infinity,
             padding:
-            const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             decoration: const BoxDecoration(
               color: Color(0xFFEBFFFD),
             ),
