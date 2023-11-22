@@ -160,4 +160,6 @@ class ApiService {
       throw Exception('Error al cargar los datos');
     }
   }
+
+
 }

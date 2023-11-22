@@ -141,32 +141,6 @@ class SideNavBar extends StatelessWidget {
             padding: EdgeInsets.only(top:16.0),
           ),
           ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text(
-              "Guardados",
-              textAlign: TextAlign.left,
-              overflow: TextOverflow.visible,
-              selectionColor: Colors.white,
-              style: GoogleFonts.roboto(
-                  textStyle:TextStyle(
-                      fontWeight: FontWeight.normal,
-                      fontSize: 20,
-                      color: Colors.black//Negro 1
-                  )
-              ),
-            ),
-            onTap: () {
-              Navigator.of(context).pop(); // Cierra el Drawer
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SavedScreen()),
-              );
-            },
-          ),
-          Padding(
-            padding: EdgeInsets.only(top:16.0),
-          ),
-          ListTile(
             leading: Icon(Icons.add_circle),
             title: Text(
               "Crear campaña",
